@@ -1,0 +1,111 @@
+.nav {
+    background-color: bisque;
+    width: 100%;
+    color: black;
+    border-width: 1px;
+    border-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.nav a{
+    color: black;
+    text-decoration: none;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+}
+
+.logo img {
+    width: 70px;
+    height: auto;
+}
+
+.logo p {
+    width: 350px;
+    font-size: 24px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.links {
+    display: flex;
+    justify-content: left;
+}
+
+.links a {
+    margin: 2rem;
+    padding: 10px;
+    border-radius: 10px;
+    height: auto;
+    
+}
+
+.links a:hover {
+    background-color: #ebd699;
+}
+
+.button-cart {
+    font-size: 1.5rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+}
+
+.button-cart:hover {
+    background-color: #ebd699;
+}
+
+.button-auth {
+    align-items: center;
+    margin: 0px 30px 0px 0px;
+    display: flex;
+}
+
+.button-auth button {
+    width: 100px;
+    margin: 1rem;
+    padding: 1rem;
+    text-align: center;
+    background-color: transparent;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 2rem;
+}
+
+.button-auth button:hover {
+    background-color: #ebd699;
+}
+
+@media only screen and (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .logo {
+        margin-bottom: 1rem;
+    }
+    
+    .links {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .links a {
+        margin: 1rem 0;
+    }
+    
+    .button-auth {
+        margin: 1rem 0;
+    }
+}
+
+
