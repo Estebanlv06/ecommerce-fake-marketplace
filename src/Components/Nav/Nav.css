@@ -1,6 +1,5 @@
 .nav {
     background-color: bisque;
-    width: 100%;
     color: black;
     border-width: 1px;
     border-color: black;
@@ -92,6 +91,7 @@
     
     .logo {
         margin-bottom: 1rem;
+        max-width: 80%;
     }
     
     .links {

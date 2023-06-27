@@ -82,7 +82,7 @@ function Home() {
                 <h1 style={{ marginBottom: '20px' }}>Latest Products</h1>
                 <div style={{ width: '30%', height: '2px', backgroundColor: 'red' }}></div>
             </div>
-            <section style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center'  }}>
+            <section className='section-products'>
                 {products !== null ? (
                     products.map(product => (
                         <CardProduct key={product.id} product={product} />
