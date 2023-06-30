@@ -120,6 +120,29 @@
     color: #7a7a7a;
 }
 
+.button-cart {
+    position: relative;
+    display: inline-block;
+}
+
+.button-cart .badge {
+    position: absolute;
+    bottom: -8px;
+    right: -8px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 4px;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 @media only screen and (max-width: 768px) {
     .header {
     flex-direction: column;

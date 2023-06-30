@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import './Home.css'
 import Logo from '../../Components/Nav/Logo'
-import CardProduct from '../../Components/Products/CardProduct';
+import CardProduct from '../../Components/Products/CardProduct'
 import FeaturedCard from '../../Components/Products/FeaturedCard'
+import Sidebar from '../../Components/Sidebar/Sidebar'
 import axios from 'axios';
 
 
 function Home() {
     const [products, setproducts] = useState(null);
     const [featuredProducts, setFeaturedProducts] = useState([]);
+    const [cartItems, setCartItems] = useState([]);
+    const [sidebarOpen, setSidebarOpen] = useState(false);
+
 
     useEffect(() => {
 
@@ -31,6 +35,83 @@ function Home() {
             setFeaturedProducts(filteredProducts);
         }
     }, [products]);
+
+    const [showCartButton, setShowCartButton] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+        const headerHeight = document.querySelector('.header').offsetHeight;
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        setShowCartButton(scrollTop > headerHeight);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+        window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    const addToCart = (product) => {
+        const existingProduct = cartItems.find(item => item.id === product.id);
+    
+        if (existingProduct) {
+            const updatedCartItems = cartItems.map(item => {
+                if (item.id === product.id) {
+                    return {
+                        ...item,
+                        quantity: item.quantity + 1
+                    };
+                }
+                return item;
+            });
+            setCartItems(updatedCartItems);
+        } else {
+            const newCartItem = {
+                id: product.id,
+                title: product.title,
+                price: product.price,
+                description: product.description,
+                image: product.image,
+                quantity: 1
+            };
+            setCartItems([...cartItems, newCartItem]);
+        }
+    };
+
+    const handleIncreaseQuantity = (itemId) => {
+        const updatedCartItems = cartItems.map((cartItem) => {
+            if (cartItem.id === itemId) {
+                return { ...cartItem, quantity: cartItem.quantity + 1 };
+            }
+            return cartItem;
+            });
+            setCartItems(updatedCartItems);
+        };
+        
+        const handleDecreaseQuantity = (itemId) => {
+            const updatedCartItems = cartItems.map((cartItem) => {
+            if (cartItem.id === itemId && cartItem.quantity > 1) {
+                return { ...cartItem, quantity: cartItem.quantity - 1 };
+            }
+            return cartItem;
+            });
+            setCartItems(updatedCartItems);
+        };
+
+    const openSidebar = () => {
+        setSidebarOpen(true);
+    };
+
+    const closeSidebar = () => {
+        setSidebarOpen(false);
+    };
+
+    const handleChangeCartItems = (newValue) => {
+        setCartItems(newValue);
+    };
+    
+    
+
     return (
         <main className='container'>
             <nav className='nav'>
@@ -43,9 +124,6 @@ function Home() {
                 </div>
 
                 <div className='button-auth'>
-                    <div className='button-cart'>
-                        <i className='pi pi-shopping-cart'></i>
-                    </div>
                     <button>Login</button>
                     <button>Sign up</button>
                 </div>
@@ -65,6 +143,21 @@ function Home() {
                 <img src='../../public/images/img-header.png' alt='Imagen'/>
                 
             </header>
+            {showCartButton && (
+                <div>
+                    <div className='button-cart' style={{ position: 'fixed', bottom: '20px', right: '20px' }} onClick={openSidebar}>
+                        <i className='pi pi-shopping-cart'></i>
+                        <span className="badge">{cartItems.length}</span>
+                    </div>
+                    {sidebarOpen && <Sidebar cartItems={cartItems}
+                                        closeSidebar={closeSidebar}
+                                        handleChangeCartItems={handleChangeCartItems}
+                                        handleIncreaseQuantity={handleIncreaseQuantity}
+                                        handleDecreaseQuantity={handleDecreaseQuantity}
+                                    />}
+                </div>
+            )}
+
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '30px'}}>
                 <h1 style={{ marginBottom: '20px' }}>Featured Products</h1>
                 <div style={{ width: '30%', height: '2px', backgroundColor: 'red' }}></div>
@@ -75,7 +168,7 @@ function Home() {
                     <FeaturedCard key={product.id} product={product} />
                 ))
                 ) : (
-                "Cargando..."
+                "Loading..."
             )}
             </section>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '30px'}}>
@@ -85,10 +178,10 @@ function Home() {
             <section className='section-products'>
                 {products !== null ? (
                     products.map(product => (
-                        <CardProduct key={product.id} product={product} />
+                        <CardProduct key={product.id} product={product} onAddToCart={addToCart}/>
                     ))
                     ) : (
-                    "Cargando..."
+                    "Loading..."
                 )}
             </section>
 

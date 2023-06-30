@@ -1,9 +1,17 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './CardProduct.css'
 import 'primeicons/primeicons.css'
-        
 
-function CardProduct({product}) {
+
+
+function CardProduct( {product, onAddToCart} ) {
+    const [visible, setVisible] = useState(true);
+
+    const addCart = () =>{
+        //setVisible(false);
+        onAddToCart(product);
+    }
+
     return (
         <div className='conteiner-card'>
             <div className='card-img'>
@@ -16,8 +24,8 @@ function CardProduct({product}) {
                     <h2>{product.category}</h2>
                 </div>
                 <div className='end-items'>
-                    <span>${product.price}</span>
-                    <button><i className='pi pi-cart-plus'></i></button>
+                    <span>$ {product.price}</span>
+                    {visible && <button onClick={addCart}><i className='pi pi-cart-plus'></i></button>}
                 </div>
             </div>
         </div>
