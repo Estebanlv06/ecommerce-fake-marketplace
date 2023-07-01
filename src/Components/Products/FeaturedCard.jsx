@@ -11,9 +11,6 @@ function FeaturedCard({product}) {
             </div>
             <div className='items'>
                 <h1>{product.title}</h1>
-                <div className='end-items'>
-                    <button><i className='pi pi-search'></i></button>
-                </div>
             </div>
         </div>
     )

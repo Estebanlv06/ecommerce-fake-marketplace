@@ -1,29 +1,51 @@
 import React, { useEffect, useState } from 'react';
 import './Sidebar.css';
 
-function Sidebar({ cartItems, closeSidebar, handleChangeCartItems,  handleIncreaseQuantity, handleDecreaseQuantity }) {
-    const [itemQuantities, setItemQuantities] = useState({});
+function Sidebar({ cartItems, closeSidebar, deleteCart, setCartItems }) {
     const [total, setTotal] = useState(0);
 
-        
-    const handleRemoveItem = (itemId) => {
-        const updatedQuantities = { ...itemQuantities };
-        delete updatedQuantities[itemId];
-        setItemQuantities(updatedQuantities);
+    const removeItem = (id) => {
+        deleteCart(id);
+    };
 
-        const updatedCartItems = cartItems.filter((cartItem) => cartItem.id !== itemId);
-        handleChangeCartItems(updatedCartItems);
+    const handleIncreaseQuantity = (cartItem) => {
+            const updatedItems = cartItems.map((item) => {
+                if (item.id === cartItem.id) {
+                    return {
+                    ...item,
+                    quantity: item.quantity + 1
+                    };
+                }
+                return item;
+            });
+            
+            setCartItems(updatedItems);
+        };
+        
+    const handleDecreaseQuantity = (cartItem) => {
+        if (cartItem.quantity > 1) {
+            const updatedItems = cartItems.map((item) => {
+                if (item.id === cartItem.id) {
+                return {
+                    ...item,
+                    quantity: item.quantity - 1
+                };
+                }
+                return item;
+            });
+        
+            setCartItems(updatedItems);
+        }
     };
 
     useEffect(() => {
         let total = 0;
-        cartItems.forEach(cartItem => {
+        cartItems.forEach((cartItem) => {
             const quantity = cartItem.quantity || 1;
             total += cartItem.price * quantity;
-            });
-            setTotal(total.toFixed(2));
-        }, [cartItems]);
-    
+        });
+        setTotal(total.toFixed(2));
+    }, [cartItems]);
 
     return (
         <div className='sidebar'>
@@ -40,12 +62,12 @@ function Sidebar({ cartItems, closeSidebar, handleChangeCartItems,  handleIncrea
                             <p>Price: ${cartItem.price}</p>
                             <div className="quantity-controls">
                                 <div>Quantity:</div>
-                                <button onClick={() => handleDecreaseQuantity(cartItem.id)}>-</button>
+                                <button onClick={() => handleDecreaseQuantity(cartItem)}>-</button>
                                 <span>{cartItem.quantity}</span>
-                                <button onClick={() => handleIncreaseQuantity(cartItem.id)}>+</button>
+                                <button onClick={() => handleIncreaseQuantity(cartItem)}>+</button>
                             </div>
                         </div>
-                        <button onClick={() => handleRemoveItem(cartItem.id)} className='button-delete'>
+                        <button onClick={() => removeItem(cartItem.id)} className='button-delete'>
                             <i className='pi pi-trash'></i>
                         </button>
                     </div>

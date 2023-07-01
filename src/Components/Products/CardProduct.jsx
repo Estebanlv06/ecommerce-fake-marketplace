@@ -1,34 +1,24 @@
-import React, {useState} from 'react'
-import './CardProduct.css'
-import 'primeicons/primeicons.css'
+import React from 'react'
+import Card from './Card'
 
-
-
-function CardProduct( {product, onAddToCart} ) {
-    const [visible, setVisible] = useState(true);
-
-    const addCart = () =>{
-        //setVisible(false);
-        onAddToCart(product);
-    }
-
+function CardProduct({ products, addToCart, deleteCart, cartItems }) {
     return (
-        <div className='conteiner-card'>
-            <div className='card-img'>
-                <img src={product.image} alt="Image" />
-            </div>
-            <div className='items'>
-                <h1>{product.title}</h1>
-                <div className='item-category'>
-                    <i className='pi pi-tag'></i>
-                    <h2>{product.category}</h2>
-                </div>
-                <div className='end-items'>
-                    <span>$ {product.price}</span>
-                    {visible && <button onClick={addCart}><i className='pi pi-cart-plus'></i></button>}
-                </div>
-            </div>
-        </div>
+        <>
+            {products !== null ? (
+                products.map(product => (
+                    <Card 
+                        key={product.id} 
+                        product={product} 
+                        addToCart={addToCart}
+                        deleteCart={deleteCart}
+                        cartItems={cartItems}
+                    />
+                ))
+                ) : (
+                "Loading..."
+            )}
+        
+        </>
     )
 }
 

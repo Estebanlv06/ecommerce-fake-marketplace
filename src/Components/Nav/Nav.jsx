@@ -5,14 +5,11 @@ import './Nav.css'
 function Nav() {
     return (
         <nav className='nav'>
-            <Logo />
+            <a href="#footer"><Logo /></a>
             <div className='links'>
                 <a href="#">Home</a>
                 <a href="#">About</a>
-                <a href="#">Contact</a>
-            </div>
-            <div className='button-cart'>
-                <i className='pi pi-shopping-cart'></i>
+                <a href="#footer">Contact</a>
             </div>
             <div className='button-auth'>
                 <button>Login</button>
