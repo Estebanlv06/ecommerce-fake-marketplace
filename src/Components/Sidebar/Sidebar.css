@@ -100,7 +100,13 @@
 
 .total-container{
     display: flex;
-    padding-top: 1rem;
+    padding: 10px;
+    border: black solid 1px;
+    border-radius: 10px;
+    margin-right: 10px;
+    position: absolute;
+    bottom: 10%;
+    width: 85%;
 }
 
 .total-container h3{
@@ -114,8 +120,8 @@
     background-color: #008CBA;
     border: 0;
     border-radius: 10px;
-    margin-right: 3rem;
-    margin-left: auto;
+    padding-right: 0;
+
 }
 
 .total-container button:hover{
