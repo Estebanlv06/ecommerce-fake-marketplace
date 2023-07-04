@@ -1,0 +1,16 @@
+.container-modal{
+    display: flex;
+    align-items: center;
+}
+
+.modal-img{
+    width: 550px;
+    height: 600px;
+}
+
+.modal-img img{
+    position: relative;
+    max-width: 550px;
+    max-height: 650px;
+    margin: 10px;
+}

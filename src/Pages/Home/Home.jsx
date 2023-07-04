@@ -7,6 +7,7 @@ import Footer from '../../Components/Footer/Footer'
 import Separator from '../../Components/Separator'
 import Featured from '../../Components/Products/Featured'
 import axios from 'axios';
+import Product from '../../Components/Products/Product'
 
 
 function Home() {
@@ -15,6 +16,8 @@ function Home() {
     const [cartItems, setCartItems] = useState([]);
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [showCartButton, setShowCartButton] = useState(false);
+    const [isModalOpen, setModalOpen] = useState(false);
+    const [productSelect, setProductSelect] = useState([]);
 
 
     useEffect(() => {
@@ -70,6 +73,16 @@ function Home() {
         setSidebarOpen(false);
     };
 
+    const openModal = () => {
+        setModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalOpen(false);
+    };
+
+    console.log(productSelect);
+
     return (
         <main className='container'>
             
@@ -77,19 +90,21 @@ function Home() {
                 <Header />
             </header>
 
+            {isModalOpen && (<Product closeModal={closeModal} product={productSelect}/>)}
+
             {showCartButton && (
-                <div>
+                <>
                     <div className='button-cart' style={{ position: 'fixed', bottom: '20px', right: '20px' }} onClick={openSidebar}>
                         <i className='pi pi-shopping-cart'></i>
                         <span className="badge">{cartItems.length}</span>
                     </div>
                     {sidebarOpen && <Sidebar
-                                        closeSidebar={closeSidebar}
-                                        deleteCart={deleteCart}
-                                        cartItems={cartItems}
-                                        setCartItems={setCartItems}
-                                    />}
-                </div>
+                        closeSidebar={closeSidebar}
+                        deleteCart={deleteCart}
+                        cartItems={cartItems}
+                        setCartItems={setCartItems}
+                    />}
+                </>
             )}
 
             <Separator>Featured Products</Separator>
@@ -106,8 +121,9 @@ function Home() {
                 <CardProduct 
                     products={products} 
                     addToCart={addToCart}
-                    deleteCart={deleteCart}
                     cartItems={cartItems}
+                    openModal={openModal}
+                    setProductSelect={setProductSelect}
                 />
             </section>
 

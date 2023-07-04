@@ -4,7 +4,7 @@ import 'primeicons/primeicons.css'
 
 
 
-function CardProduct( {product, addToCart, deleteCart, cartItems} ) {
+function CardProduct( {product, addToCart, cartItems, openModal, setProductSelect} ) {
     const [visible, setVisible] = useState(true);
     const item = cartItems.filter((cartItem) => cartItem.id == product.id);
     useEffect(() => {
@@ -15,10 +15,16 @@ function CardProduct( {product, addToCart, deleteCart, cartItems} ) {
         addToCart(product);
     }
 
+    const modal = () =>{
+        setProductSelect(product);
+        openModal();
+    }
+
     return (
         <div className='conteiner-card'>
             <div className='card-img'>
                 <img src={product.image} alt="Image" />
+                <button onClick={() => modal()} className='button-img'>View Product</button>
             </div>
             <div className='items'>
                 <h1>{product.title}</h1>
@@ -28,7 +34,7 @@ function CardProduct( {product, addToCart, deleteCart, cartItems} ) {
                 </div>
                 <div className='end-items'>
                     <span>${product.price}</span>
-                    {visible ? <button onClick={()=>addCart(product)}><i className='pi pi-cart-plus'></i></button>: <h6>added</h6>}
+                    {visible ? <button onClick={()=>addCart(product)}>Add<i className='pi pi-cart-plus'></i></button>: <h6>added</h6>}
                 </div>
             </div>
         </div>
