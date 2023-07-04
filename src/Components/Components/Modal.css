@@ -12,24 +12,17 @@
 }
 
 .modalbox{
+    margin: 1rem;
     padding: 20px;
-    width: 1200px;
-    height: 650px;
+    width: 80%;
+    height: auto;
     position: relative;
     background: #fff;
     border-radius:10px;
-    -webkit-transition: all 500ms ease-in;
-    -moz-transition: all 500ms ease-in;
-    transition: all 500ms ease-in;
-}
-
-.movedown {
-    margin: 0 auto;
 }
 
 .close {
     color: black;
-    line-height: 25px;
     position: absolute;
     right: 1px;
     text-align: center;
@@ -38,7 +31,9 @@
     text-decoration: none;
     font-weight: bold;
     border-radius:5px;
+    margin: 10px 10px 0 0;
 }
+
 .close:hover {
     background: #FAAC58;
     color:#222;
