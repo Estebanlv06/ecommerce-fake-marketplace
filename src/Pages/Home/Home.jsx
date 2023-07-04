@@ -117,7 +117,7 @@ function Home() {
             
             <Separator>Latest Products</Separator>
 
-            <section className='section-products'>
+            <section id='products' className='section-products'>
                 <CardProduct 
                     products={products} 
                     addToCart={addToCart}

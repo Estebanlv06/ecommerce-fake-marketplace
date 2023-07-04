@@ -8,7 +8,7 @@ function Nav() {
             <a href="#footer"><Logo /></a>
             <div className='links'>
                 <a href="#">Home</a>
-                <a href="#">About</a>
+                <a href="#products">Products</a>
                 <a href="#footer">Contact</a>
             </div>
             <div className='button-auth'>

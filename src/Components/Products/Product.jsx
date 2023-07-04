@@ -13,14 +13,18 @@ const Product = ({ closeModal, product }) => {
                     <div className='modal-img'>
                         <img src={product.image} alt="Image" />
                     </div>
-                    <div className=''>
+                    <div className='details'>
                         <h1>{product.title}</h1>
-                        <div className=''>
-                            <i className='pi pi-tag'></i>
-                            <h2>{product.category}</h2>
+                        <div className='category'>
+                        <i className='pi pi-tag'></i>
+                        <h2>{product.category}</h2>
                         </div>
-                        <div className=''>
+                        <div className='description'>
+                            <p>{product.description}</p>
+                        </div>
+                        <div className='price-btn'>
                             <span>${product.price}</span>
+                            <button >Add<i className='pi pi-cart-plus'></i></button>
                         </div>
                     </div>
                 </div>
