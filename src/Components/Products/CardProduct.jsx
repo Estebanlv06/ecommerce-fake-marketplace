@@ -1,7 +1,7 @@
 import React from 'react'
 import Card from './Card'
 
-function CardProduct({ products, addToCart, deleteCart, cartItems }) {
+function CardProduct({ products, addToCart, cartItems, openModal, setProductSelect}) {
     return (
         <>
             {products !== null ? (
@@ -10,8 +10,9 @@ function CardProduct({ products, addToCart, deleteCart, cartItems }) {
                         key={product.id} 
                         product={product} 
                         addToCart={addToCart}
-                        deleteCart={deleteCart}
                         cartItems={cartItems}
+                        openModal={openModal}
+                        setProductSelect={setProductSelect}
                     />
                 ))
                 ) : (
