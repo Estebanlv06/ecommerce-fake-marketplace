@@ -58,6 +58,7 @@ function Home() {
     const addToCart = (product) => {
         product.quantity = 1;
         setCartItems([...cartItems, product]);
+        setModalOpen(false);
     };
 
     const deleteCart = (id) => {
@@ -81,8 +82,6 @@ function Home() {
         setModalOpen(false);
     };
 
-    console.log(productSelect);
-
     return (
         <main className='container'>
             
@@ -90,7 +89,12 @@ function Home() {
                 <Header />
             </header>
 
-            {isModalOpen && (<Product closeModal={closeModal} product={productSelect}/>)}
+            {isModalOpen && (<Product 
+                product={productSelect}
+                closeModal={closeModal} 
+                addToCart={addToCart}
+                cartItems={cartItems}
+            />)}
 
             {showCartButton && (
                 <>

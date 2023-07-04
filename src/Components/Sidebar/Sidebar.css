@@ -41,7 +41,6 @@
     border-bottom: black 1px solid;
 }
 
-
 .cart-item-details {
     margin-left: 10px;
     margin-bottom: 10px;
@@ -130,4 +129,13 @@
 .total-container button:hover{
     background-color: blue;
     color: white;
+}
+
+.no-found{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 70%;
+    padding-left: 100px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }

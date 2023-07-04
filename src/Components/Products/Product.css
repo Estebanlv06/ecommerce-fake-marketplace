@@ -38,12 +38,13 @@
 
 .category h2{
     color: gray;
+    
 }
 
 .category i {
-    margin-right: 5px;
     font-size: 16px;
     color: blue;
+    margin-right: 10px;
 }
 
 .description {
@@ -65,15 +66,22 @@
 .price-btn button {
     width: 100px;
     height: 40px;
-    padding: 5px;
-    color: white;
-    border: none;
-    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    color: blue;
+    border-radius: 10%;
+    border: 1px solid blue;
     text-align: center;
-    background-color: blue;
-    cursor: pointer;
+    align-items: center;
+    background-color: transparent;
+}
+
+.price-btn i {
+    font-size: 20px;
+    margin-left: 10px;
 }
 
 .price-btn button:hover {
-    background-color: darkblue;
+    background-color: blue;
+    color: white;
 }
