@@ -3,7 +3,7 @@
 <h1> PROYECTO EN DESARROLLO</h1>
 
 Visualización previa, Home:
-![referencia](/public/images/home.PNG)
+![referencia](/public/images/home.png)
 
 Products:
-![referencia](/public/images/products.PNG)
+![referencia](/public/images/products.png)
