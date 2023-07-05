@@ -23,14 +23,14 @@ Button add Product:
 Product added:
 ![referencia](/public/images/added-product1.png)
 
-Siderbar Product:
-![referencia](/public/images/siderbar-product1.png)
+Sidebar Product:
+![referencia](/public/images/sidebar-product1.png)
 
-Siderbar Products:
-![referencia](/public/images/siderbar-several.png)
+Sidebar Products:
+![referencia](/public/images/sidebar-several.png)
 
-Siderbar Empty:
-![referencia](/public/images/siderbar-empty.png)
+Sidebar Empty:
+![referencia](/public/images/sidebar-empty.png)
 
 Footer:
 ![referencia](/public/images/footer.png)
