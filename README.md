@@ -1,6 +1,12 @@
 # ecommerce-fake-marketplace
 
-<h1> PROYECTO EN DESARROLLO</h1>
+## Funciones Faltantes
+
+- Botones de login y sign in no funcionan.
+- El botón "buy" del sidebar no está implementado.
+- Faltan funciones de filtrado de productos.
+- Faltan funciones para el footer.
+
 
 Visualización previa, Home:
 ![referencia](/public/images/home.png)
