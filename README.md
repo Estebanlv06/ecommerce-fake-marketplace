@@ -9,7 +9,7 @@
 
 Por ahora la aplicación se puede utilizar con alguna funciones implementadas.
 
-## Instala y prueba el proyecto en tu repositorio local:
+## Instala y prueba el proyecto en tu repositorio local
 
 1. Clonar el repositorio: 
 Abre tu terminal o línea de comandos y navega hasta el directorio en el que deseas clonar el repositorio. Luego, utiliza el siguiente comando para clonar el repositorio en tu máquina local:
@@ -28,7 +28,9 @@ npm run dev
 ```
 El proyecto realiza consultas a una api para obtener los datos que se mostran, por lo que es necesarios que estes conectado a internet para poder probar el proyecto.
 
-Visualización previa, Home:
+## Visualización previa
+
+Home:
 ![referencia](/public/images/home.png)
 
 feaured:
